@@ -13,8 +13,7 @@
   --font:'DM Sans',sans-serif;--mono:'DM Mono',monospace;
   --sidebar-w:220px;
 }
-
-/* ===== BASE ===== */
+*{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh}
 h1{font-size:22px;font-weight:600}h2{font-size:16px;font-weight:600}
 
@@ -35,7 +34,7 @@ h1{font-size:22px;font-weight:600}h2{font-size:16px;font-weight:600}
   .sidebar{display:flex;flex-direction:column;width:var(--sidebar-w);min-height:100vh;background:var(--card);border-right:1px solid var(--border);position:fixed;top:0;left:0;bottom:0;z-index:30;overflow-y:auto}
   .sidebar-logo{padding:20px 20px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
   .sidebar-logo-icon{font-size:22px}
-  .sidebar-logo-text{font-size:15px;font-weight:600;color:var(--text)}
+  .sidebar-logo-text{font-size:15px;font-weight:600}
   .sidebar-logo-sub{font-size:10px;color:var(--muted)}
   .sidebar-nav{flex:1;padding:12px 10px}
   .sidebar-btn{width:100%;display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;border:none;background:none;cursor:pointer;font-family:var(--font);font-size:13px;font-weight:500;color:var(--muted);text-align:left;transition:background .12s,color .12s;margin-bottom:2px}
@@ -51,15 +50,13 @@ h1{font-size:22px;font-weight:600}h2{font-size:16px;font-weight:600}
   .bottomnav{display:none}
 }
 
-/* ===== CARDS / INPUTS ===== */
+/* ===== COMPONENTES ===== */
 .card{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);padding:14px 16px;margin:0 16px 10px}
 .card-sm{background:var(--card);border-radius:8px;border:1px solid var(--border);padding:10px 12px;margin-bottom:8px}
 input,select,textarea{font-family:var(--font);font-size:14px;width:100%;border:1px solid var(--border);border-radius:8px;padding:10px 12px;background:var(--card);color:var(--text);outline:none;transition:border-color .15s;resize:none}
 input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 label{font-size:12px;color:var(--muted);display:block;margin-bottom:4px;margin-top:10px}
 label:first-child{margin-top:0}
-
-/* ===== BUTTONS ===== */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:var(--font);font-size:14px;font-weight:500;padding:10px 16px;border-radius:8px;border:none;cursor:pointer;transition:opacity .15s}
 .btn:active{opacity:.8}
 .btn-primary{background:var(--accent);color:#fff;width:100%}
@@ -68,15 +65,36 @@ label:first-child{margin-top:0}
 .btn-danger{background:transparent;color:var(--danger);border:1px solid #EEC5C2;font-size:12px;padding:6px 10px;border-radius:6px}
 .btn-danger-full{background:var(--danger);color:#fff;width:100%}
 .btn-sm{padding:6px 12px;font-size:12px;border-radius:6px}
-.btn-icon{padding:6px;border-radius:6px;line-height:1}
-
-/* ===== LIST ===== */
 .item-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)}
 .item-row:last-child{border-bottom:none}
 .empty{text-align:center;padding:40px 20px;color:var(--muted);font-size:14px}
 .section{padding:14px 0 6px}
 .divider{height:1px;background:var(--border);margin:12px 0}
 .scroll-area{flex:1;overflow-y:auto;padding-top:4px}
+.topbar-actions{display:flex;align-items:center;gap:6px}
+
+/* ===== SUGESTÕES ===== */
+.sug-card{background:var(--accent-light);border:1px solid #B8DECA;border-radius:var(--radius);margin:10px 16px 4px;overflow:hidden}
+.sug-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;cursor:pointer;user-select:none}
+.sug-header-left{display:flex;align-items:center;gap:8px}
+.sug-icon{font-size:16px;line-height:1}
+.sug-title{font-size:12px;font-weight:600;color:var(--accent)}
+.sug-badge{background:var(--accent);color:#fff;border-radius:10px;padding:1px 7px;font-size:10px;font-family:var(--mono)}
+.sug-chev{color:var(--accent);transition:transform .2s}
+.sug-chev svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.5}
+.sug-chev.fechado{transform:rotate(-90deg)}
+.sug-body{border-top:1px solid rgba(45,106,79,.15)}
+.sug-item{display:flex;align-items:center;padding:8px 14px;border-bottom:1px solid rgba(45,106,79,.1)}
+.sug-item:last-of-type{border-bottom:none}
+.sug-item-info{flex:1;min-width:0}
+.sug-item-nome{font-size:13px;font-weight:500;color:var(--text)}
+.sug-item-meta{font-size:11px;color:var(--muted);margin-top:1px}
+.sug-add-btn{background:var(--accent);color:#fff;border:none;border-radius:6px;padding:5px 12px;font-size:12px;font-weight:500;cursor:pointer;font-family:var(--font);flex-shrink:0;margin-left:10px;transition:opacity .15s}
+.sug-add-btn:active{opacity:.7}
+.sug-add-btn.adicionado{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.sug-add-all{display:block;width:100%;text-align:center;padding:9px 14px;border:none;background:rgba(45,106,79,.08);font-size:12px;font-weight:600;color:var(--accent);cursor:pointer;font-family:var(--font);border-top:1px solid rgba(45,106,79,.15);transition:background .15s}
+.sug-add-all:hover{background:rgba(45,106,79,.14)}
+.sug-vazia{padding:10px 14px;font-size:12px;color:var(--muted)}
 
 /* ===== MODAL ===== */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:100;align-items:flex-end;justify-content:center}
@@ -127,8 +145,7 @@ label:first-child{margin-top:0}
 .check-btn.done{border-color:var(--accent);background:var(--accent)}
 .check-btn.done svg{opacity:1;stroke:#fff}
 .item-row.done-row .item-name{text-decoration:line-through;color:var(--muted)}
-.item-row.done-row .item-qty{color:var(--border)}
-.item-row.done-row .item-notes{color:var(--border)}
+.item-row.done-row .item-qty,.item-row.done-row .item-notes{color:var(--border)}
 
 /* ===== TABS ===== */
 .lista-tabs{display:flex;gap:6px;padding:10px 16px 6px;overflow-x:auto;scrollbar-width:none}
@@ -169,26 +186,20 @@ label:first-child{margin-top:0}
 /* ===== ACTION SHEET ===== */
 .action-sheet{background:var(--card);border-radius:20px 20px 0 0;width:100%;max-width:480px;padding:12px 20px 32px;animation:slideUp .2s ease}
 @media(min-width:768px){.action-sheet{border-radius:16px;padding:20px 24px}}
-.action-item{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--border);cursor:pointer;font-size:15px;color:var(--text);transition:color .1s;border:none;background:none;width:100%;font-family:var(--font);text-align:left}
-.action-item:last-child{border-bottom:none}
+.action-item{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--border);cursor:pointer;font-size:15px;color:var(--text);border:none;background:none;width:100%;font-family:var(--font);text-align:left;transition:color .1s}
+.action-item:last-of-type{border-bottom:none}
 .action-item:hover{color:var(--accent)}
 .action-item-icon{font-size:20px;width:28px;text-align:center;flex-shrink:0}
 .action-cancel{color:var(--muted);font-size:14px;padding:10px 0 0;cursor:pointer;text-align:center;width:100%;border:none;background:none;font-family:var(--font);margin-top:4px}
-
-/* ===== TOPBAR ACTIONS ===== */
-.topbar-actions{display:flex;align-items:center;gap:6px}
 </style>
 </head>
 <body>
 
 <!-- SIDEBAR (desktop) -->
-<aside class="sidebar" id="sidebar">
+<aside class="sidebar">
   <div class="sidebar-logo">
     <span class="sidebar-logo-icon">🛒</span>
-    <div>
-      <div class="sidebar-logo-text">Compras</div>
-      <div class="sidebar-logo-sub">Gestão de insumos</div>
-    </div>
+    <div><div class="sidebar-logo-text">Compras</div><div class="sidebar-logo-sub">Gestão de insumos</div></div>
   </div>
   <nav class="sidebar-nav">
     <button class="sidebar-btn active" onclick="ir('lista')" id="snav-lista">
@@ -209,17 +220,16 @@ label:first-child{margin-top:0}
     </button>
   </nav>
   <div class="sidebar-footer">
-    <button class="sidebar-footer-btn" onclick="abrirModalBackup()">
+    <button class="sidebar-footer-btn" onclick="abrirModal('sheet-backup')">
       <svg viewBox="0 0 24 24" width="16" height="16" stroke-width="1.8" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Backup / Restaurar
     </button>
   </div>
 </aside>
 
-<!-- APP CONTENT -->
 <div class="app-wrap">
 
-<!-- TELA: LISTA -->
+<!-- LISTA -->
 <div id="screen-lista" class="screen active">
   <div class="topbar">
     <div>
@@ -228,8 +238,8 @@ label:first-child{margin-top:0}
     </div>
     <div class="topbar-actions">
       <button class="btn btn-ghost btn-sm" onclick="abrirAcaoRota()">🗺 Rota</button>
-      <button class="btn btn-ghost btn-sm" onclick="exportarWhatsApp()" title="Exportar para WhatsApp">
-        <svg viewBox="0 0 24 24" width="16" height="16" stroke-width="1.8" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <button class="btn btn-ghost btn-sm" onclick="exportarWhatsApp()">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke-width="2" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         Partilhar
       </button>
     </div>
@@ -241,13 +251,13 @@ label:first-child{margin-top:0}
   </div>
 </div>
 
-<!-- TELA: DASHBOARD -->
+<!-- DASHBOARD -->
 <div id="screen-dash" class="screen">
   <div class="topbar"><h1>Resumo</h1></div>
   <div class="scroll-area" id="dash-content" style="padding-top:12px"></div>
 </div>
 
-<!-- TELA: CADASTROS -->
+<!-- CADASTROS -->
 <div id="screen-cadastros" class="screen">
   <div class="topbar"><h1>Cadastros</h1></div>
   <div class="scroll-area" style="padding:0 16px">
@@ -278,7 +288,7 @@ label:first-child{margin-top:0}
   </div>
 </div>
 
-<!-- TELA: HISTÓRICO -->
+<!-- HISTÓRICO -->
 <div id="screen-historico" class="screen">
   <div class="topbar"><h1>Histórico</h1></div>
   <div class="scroll-area" id="historico-content" style="padding:0 16px 12px"></div>
@@ -302,7 +312,6 @@ label:first-child{margin-top:0}
     Histórico
   </button>
 </nav>
-
 </div><!-- /app-wrap -->
 
 <!-- MODAL: ADICIONAR -->
@@ -356,7 +365,7 @@ label:first-child{margin-top:0}
     <label>Nome do insumo</label><input id="ins-nome" type="text" placeholder="ex: Mamão papaia">
     <label>Categoria (opcional)</label><input id="ins-cat" type="text" placeholder="ex: Frutas, Carnes, Laticínios">
     <label>Fornecedor padrão <span style="font-weight:400;color:var(--muted)">(opcional)</span></label>
-    <select id="ins-forn"><option value="">Sem fornecedor por enquanto</option></select>
+    <select id="ins-forn"></select>
     <div style="margin-top:16px;display:flex;gap:8px">
       <button class="btn btn-neutral" style="flex:1" onclick="fecharModal('modal-insumo')">Cancelar</button>
       <button class="btn btn-primary" style="flex:1" onclick="salvarInsumo()">Salvar</button>
@@ -384,14 +393,14 @@ label:first-child{margin-top:0}
 <div class="modal-overlay" id="sheet-rota">
   <div class="action-sheet">
     <div class="modal-handle"></div>
-    <div style="font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Abrir rota em</div>
+    <div style="font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Abrir rota em</div>
     <button class="action-item" onclick="abrirRota('maps')">
       <span class="action-item-icon">🗺</span>
-      <div><div style="font-weight:500">Google Maps</div><div style="font-size:12px;color:var(--muted)">Rota otimizada entre fornecedores</div></div>
+      <div><div style="font-weight:500">Google Maps</div><div style="font-size:12px;color:var(--muted)">Rota com múltiplos fornecedores</div></div>
     </button>
     <button class="action-item" onclick="abrirRota('waze')">
       <span class="action-item-icon">🚗</span>
-      <div><div style="font-weight:500">Waze</div><div style="font-size:12px;color:var(--muted)">Navegar com tráfego em tempo real</div></div>
+      <div><div style="font-weight:500">Waze</div><div style="font-size:12px;color:var(--muted)">Navegação com tráfego em tempo real</div></div>
     </button>
     <button class="action-cancel" onclick="fecharModal('sheet-rota')">Cancelar</button>
   </div>
@@ -401,7 +410,7 @@ label:first-child{margin-top:0}
 <div class="modal-overlay" id="sheet-backup">
   <div class="action-sheet">
     <div class="modal-handle"></div>
-    <div style="font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Dados</div>
+    <div style="font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Dados</div>
     <button class="action-item" onclick="exportarDados();fecharModal('sheet-backup')">
       <span class="action-item-icon">⬇</span>
       <div><div style="font-weight:500">Exportar backup</div><div style="font-size:12px;color:var(--muted)">Salvar arquivo JSON com todos os dados</div></div>
@@ -418,6 +427,7 @@ label:first-child{margin-top:0}
 <script>
 const meses=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
 const diasSemana=['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
+const diasSemanaAbrev=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
 function uid(){return'x'+Math.random().toString(36).slice(2,8)}
 function norm(s){return(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')}
 function hoje(){const d=new Date();return`${d.getDate()} de ${meses[d.getMonth()]} de ${d.getFullYear()}`}
@@ -429,82 +439,98 @@ const TIPOS_LISTA=[
   {id:'estoque',label:'Estoque'},
 ];
 
-const DADOS_INICIAIS={
-  fornecedores:[
-    {id:'f1',nome:'Praça',tel:'',end:''},
-    {id:'f2',nome:'Fornecedor',tel:'',end:''},
-    {id:'f3',nome:'Mercado',tel:'',end:''},
-    {id:'f4',nome:'Porto Alegre',tel:'',end:''},
-    {id:'f5',nome:'Focatto',tel:'',end:''},
-    {id:'f6',nome:'Santa Clara',tel:'',end:''},
-    {id:'f7',nome:'Utensílios',tel:'',end:''},
-  ],
-  insumos:[
-    {id:'i01',nome:'Pão de milho',cat:'Padaria',fornId:'f1'},
-    {id:'i02',nome:'Pão de centeio',cat:'Padaria',fornId:'f1'},
-    {id:'i03',nome:'Amora congelada',cat:'Frutas congeladas',fornId:'f2'},
-    {id:'i04',nome:'Morango',cat:'Frutas congeladas',fornId:'f2'},
-    {id:'i05',nome:'Açúcar refinado',cat:'Secos',fornId:'f3'},
-    {id:'i06',nome:'Açúcar demerara',cat:'Secos',fornId:'f3'},
-    {id:'i07',nome:'Açúcar mascavo',cat:'Secos',fornId:'f3'},
-    {id:'i08',nome:'Essência de baunilha',cat:'Secos',fornId:'f3'},
-    {id:'i09',nome:'Chocolate branco',cat:'Chocolates',fornId:'f3'},
-    {id:'i10',nome:'Creme de leite',cat:'Laticínios',fornId:'f3'},
-    {id:'i11',nome:'Creme culinário',cat:'Laticínios',fornId:'f3'},
-    {id:'i12',nome:'Leite de coco',cat:'Secos',fornId:'f3'},
-    {id:'i13',nome:'Coco ralado',cat:'Secos',fornId:'f3'},
-    {id:'i14',nome:'Banana',cat:'Frutas',fornId:'f3'},
-    {id:'i15',nome:'Maçã',cat:'Frutas',fornId:'f3'},
-    {id:'i16',nome:'Limão taiti',cat:'Frutas',fornId:'f3'},
-    {id:'i17',nome:'Limão siciliano',cat:'Frutas',fornId:'f3'},
-    {id:'i18',nome:'Maracujá',cat:'Frutas',fornId:'f3'},
-    {id:'i19',nome:'Espinafre',cat:'Hortaliças',fornId:'f3'},
-    {id:'i20',nome:'Alho poró',cat:'Hortaliças',fornId:'f3'},
-    {id:'i21',nome:'Pimentão',cat:'Hortaliças',fornId:'f3'},
-    {id:'i22',nome:'Cenoura',cat:'Hortaliças',fornId:'f3'},
-    {id:'i23',nome:'Cebola',cat:'Hortaliças',fornId:'f3'},
-    {id:'i24',nome:'Salsinha',cat:'Ervas',fornId:'f3'},
-    {id:'i25',nome:'Alecrim',cat:'Ervas',fornId:'f3'},
-    {id:'i26',nome:'Presunto',cat:'Frios',fornId:'f3'},
-    {id:'i27',nome:'Tomate cereja',cat:'Hortaliças',fornId:'f3'},
-    {id:'i28',nome:'Gelatina sem sabor',cat:'Secos',fornId:'f3'},
-    {id:'i29',nome:'Goiabada zero',cat:'Doces',fornId:'f3'},
-    {id:'i30',nome:'Chocolate meio amargo zero',cat:'Chocolates',fornId:'f3'},
-    {id:'i31',nome:'Chocolate branco zero',cat:'Chocolates',fornId:'f3'},
-    {id:'i32',nome:'Açúcar de baunilha',cat:'Secos',fornId:'f4'},
-    {id:'i33',nome:'Uva passa',cat:'Secos',fornId:'f4'},
-    {id:'i34',nome:'Damasco',cat:'Secos',fornId:'f4'},
-    {id:'i35',nome:'Ameixa seca',cat:'Secos',fornId:'f4'},
-    {id:'i36',nome:'Xerém de caju',cat:'Secos',fornId:'f4'},
-    {id:'i37',nome:'Canela em pó',cat:'Especiarias',fornId:'f4'},
-    {id:'i38',nome:'Croissant de frango',cat:'Padaria',fornId:'f5'},
-    {id:'i39',nome:'Pastel de nata',cat:'Padaria',fornId:'f5'},
-    {id:'i40',nome:'Muffin chocolate',cat:'Padaria',fornId:'f5'},
-    {id:'i41',nome:'Suíno',cat:'Carnes',fornId:'f5'},
-    {id:'i42',nome:'Requeijão',cat:'Laticínios',fornId:'f6'},
-    {id:'i43',nome:'Nata',cat:'Laticínios',fornId:'f6'},
-    {id:'i44',nome:'Leite',cat:'Laticínios',fornId:'f6'},
-    {id:'i45',nome:'Manteiga',cat:'Laticínios',fornId:'f6'},
-    {id:'i46',nome:'Queijo muçarela',cat:'Laticínios',fornId:'f6'},
-    {id:'i47',nome:'Balança para cozinha',cat:'Utensílios',fornId:'f7'},
-  ],
-  listas:{recorrente:[],eventual:[],estoque:[]},
-  listaTipoAtual:'recorrente',
-  historico:[]
-};
+// Insumos recorrentes para demo com padrão semanal no mesmo dia da semana
+const RECORRENTES_DEMO=['i01','i02','i03','i04','i10','i14','i16','i22','i23','i24','i42','i43','i44','i45','i46'];
 
-const semPassada=new Date(Date.now()-7*864e5).toISOString();
-const qtdsDef={i01:'2 und',i02:'2 und',i38:'3 pct',i39:'2 cx',i40:'1 cx',i41:'1kg',i42:'1 balde',i43:'5 baldes',i44:'1 cx',i45:'5kg'};
-DADOS_INICIAIS.insumos.forEach(ins=>{
-  DADOS_INICIAIS.historico.push({id:uid(),insumoId:ins.id,qtd:qtdsDef[ins.id]||'',notas:'',data:semPassada,tipo:'recorrente'});
-});
+const DADOS_INICIAIS=(()=>{
+  const d={
+    fornecedores:[
+      {id:'f1',nome:'Praça',tel:'',end:''},
+      {id:'f2',nome:'Fornecedor',tel:'',end:''},
+      {id:'f3',nome:'Mercado',tel:'',end:''},
+      {id:'f4',nome:'Porto Alegre',tel:'',end:''},
+      {id:'f5',nome:'Focatto',tel:'',end:''},
+      {id:'f6',nome:'Santa Clara',tel:'',end:''},
+      {id:'f7',nome:'Utensílios',tel:'',end:''},
+    ],
+    insumos:[
+      {id:'i01',nome:'Pão de milho',cat:'Padaria',fornId:'f1'},
+      {id:'i02',nome:'Pão de centeio',cat:'Padaria',fornId:'f1'},
+      {id:'i03',nome:'Amora congelada',cat:'Frutas congeladas',fornId:'f2'},
+      {id:'i04',nome:'Morango',cat:'Frutas congeladas',fornId:'f2'},
+      {id:'i05',nome:'Açúcar refinado',cat:'Secos',fornId:'f3'},
+      {id:'i06',nome:'Açúcar demerara',cat:'Secos',fornId:'f3'},
+      {id:'i07',nome:'Açúcar mascavo',cat:'Secos',fornId:'f3'},
+      {id:'i08',nome:'Essência de baunilha',cat:'Secos',fornId:'f3'},
+      {id:'i09',nome:'Chocolate branco',cat:'Chocolates',fornId:'f3'},
+      {id:'i10',nome:'Creme de leite',cat:'Laticínios',fornId:'f3'},
+      {id:'i11',nome:'Creme culinário',cat:'Laticínios',fornId:'f3'},
+      {id:'i12',nome:'Leite de coco',cat:'Secos',fornId:'f3'},
+      {id:'i13',nome:'Coco ralado',cat:'Secos',fornId:'f3'},
+      {id:'i14',nome:'Banana',cat:'Frutas',fornId:'f3'},
+      {id:'i15',nome:'Maçã',cat:'Frutas',fornId:'f3'},
+      {id:'i16',nome:'Limão taiti',cat:'Frutas',fornId:'f3'},
+      {id:'i17',nome:'Limão siciliano',cat:'Frutas',fornId:'f3'},
+      {id:'i18',nome:'Maracujá',cat:'Frutas',fornId:'f3'},
+      {id:'i19',nome:'Espinafre',cat:'Hortaliças',fornId:'f3'},
+      {id:'i20',nome:'Alho poró',cat:'Hortaliças',fornId:'f3'},
+      {id:'i21',nome:'Pimentão',cat:'Hortaliças',fornId:'f3'},
+      {id:'i22',nome:'Cenoura',cat:'Hortaliças',fornId:'f3'},
+      {id:'i23',nome:'Cebola',cat:'Hortaliças',fornId:'f3'},
+      {id:'i24',nome:'Salsinha',cat:'Ervas',fornId:'f3'},
+      {id:'i25',nome:'Alecrim',cat:'Ervas',fornId:'f3'},
+      {id:'i26',nome:'Presunto',cat:'Frios',fornId:'f3'},
+      {id:'i27',nome:'Tomate cereja',cat:'Hortaliças',fornId:'f3'},
+      {id:'i28',nome:'Gelatina sem sabor',cat:'Secos',fornId:'f3'},
+      {id:'i29',nome:'Goiabada zero',cat:'Doces',fornId:'f3'},
+      {id:'i30',nome:'Chocolate meio amargo zero',cat:'Chocolates',fornId:'f3'},
+      {id:'i31',nome:'Chocolate branco zero',cat:'Chocolates',fornId:'f3'},
+      {id:'i32',nome:'Açúcar de baunilha',cat:'Secos',fornId:'f4'},
+      {id:'i33',nome:'Uva passa',cat:'Secos',fornId:'f4'},
+      {id:'i34',nome:'Damasco',cat:'Secos',fornId:'f4'},
+      {id:'i35',nome:'Ameixa seca',cat:'Secos',fornId:'f4'},
+      {id:'i36',nome:'Xerém de caju',cat:'Secos',fornId:'f4'},
+      {id:'i37',nome:'Canela em pó',cat:'Especiarias',fornId:'f4'},
+      {id:'i38',nome:'Croissant de frango',cat:'Padaria',fornId:'f5'},
+      {id:'i39',nome:'Pastel de nata',cat:'Padaria',fornId:'f5'},
+      {id:'i40',nome:'Muffin chocolate',cat:'Padaria',fornId:'f5'},
+      {id:'i41',nome:'Suíno',cat:'Carnes',fornId:'f5'},
+      {id:'i42',nome:'Requeijão',cat:'Laticínios',fornId:'f6'},
+      {id:'i43',nome:'Nata',cat:'Laticínios',fornId:'f6'},
+      {id:'i44',nome:'Leite',cat:'Laticínios',fornId:'f6'},
+      {id:'i45',nome:'Manteiga',cat:'Laticínios',fornId:'f6'},
+      {id:'i46',nome:'Queijo muçarela',cat:'Laticínios',fornId:'f6'},
+      {id:'i47',nome:'Balança para cozinha',cat:'Utensílios',fornId:'f7'},
+    ],
+    listas:{recorrente:[],eventual:[],estoque:[]},
+    listaTipoAtual:'recorrente',
+    historico:[]
+  };
 
+  const qtdsDef={i01:'2 und',i02:'2 und',i38:'3 pct',i39:'2 cx',i40:'1 cx',i41:'1kg',
+    i42:'1 balde',i43:'5 baldes',i44:'1 cx',i45:'5kg',i03:'1 kg',i04:'1 kg',
+    i10:'6 cx',i14:'1 penca',i16:'1 kg',i22:'1 kg',i23:'2 kg',i24:'2 maços',i46:'1 kg'};
+
+  // 3 semanas de histórico no mesmo dia da semana de hoje → padrão semanal evidente
+  [7,14,21].forEach(diasAtras=>{
+    const data=new Date(Date.now()-diasAtras*864e5).toISOString();
+    d.insumos.forEach(ins=>{
+      // Todos os insumos têm 1 entrada (7 dias atrás); os recorrentes têm 3
+      if(diasAtras===7||RECORRENTES_DEMO.includes(ins.id)){
+        d.historico.push({id:uid(),insumoId:ins.id,qtd:qtdsDef[ins.id]||'',notas:'',data,tipo:'recorrente'});
+      }
+    });
+  });
+
+  return d;
+})();
+
+// Carrega com migração de versões anteriores
 let dados=(() => {
   try{
-    const s=localStorage.getItem('compras_app_v7');
+    const s=localStorage.getItem('compras_app_v8');
     if(s) return JSON.parse(s);
-    // Migra de v6/v4
-    for(const key of['compras_app_v6','compras_app_v4']){
+    for(const key of['compras_app_v7','compras_app_v6','compras_app_v4']){
       const old=localStorage.getItem(key);
       if(old){
         const o=JSON.parse(old);
@@ -526,7 +552,7 @@ if(!dados.listas) dados.listas={recorrente:[],eventual:[],estoque:[]};
 TIPOS_LISTA.forEach(t=>{if(!dados.listas[t.id])dados.listas[t.id]=[];});
 if(!dados.listaTipoAtual) dados.listaTipoAtual='recorrente';
 
-function salvar(){localStorage.setItem('compras_app_v7',JSON.stringify(dados))}
+function salvar(){localStorage.setItem('compras_app_v8',JSON.stringify(dados))}
 function listaAtual(){return dados.listas[dados.listaTipoAtual]||[]}
 
 // ===== CONFIRMAR =====
@@ -546,14 +572,12 @@ function ir(tela){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.bnav-btn,.sidebar-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('screen-'+tela).classList.add('active');
-  const nav=document.getElementById('nav-'+tela);
-  if(nav) nav.classList.add('active');
-  const snav=document.getElementById('snav-'+tela);
-  if(snav) snav.classList.add('active');
-  if(tela==='lista')renderLista();
-  if(tela==='dash')renderDash();
-  if(tela==='cadastros')renderCadastros();
-  if(tela==='historico')renderHistorico();
+  document.getElementById('nav-'+tela)?.classList.add('active');
+  document.getElementById('snav-'+tela)?.classList.add('active');
+  if(tela==='lista') renderLista();
+  if(tela==='dash') renderDash();
+  if(tela==='cadastros') renderCadastros();
+  if(tela==='historico') renderHistorico();
 }
 document.getElementById('topbar-date').textContent=hoje();
 
@@ -568,29 +592,307 @@ function renderTabs(){
     </button>`;
   }).join('');
 }
+function mudarListaTipo(tipo){dados.listaTipoAtual=tipo;salvar();renderTabs();renderLista();}
 
-function mudarListaTipo(tipo){
-  dados.listaTipoAtual=tipo;salvar();renderTabs();renderLista();
+// ===== SUGESTÕES =====
+let sugestoesAberto=true;
+
+function calcSugestoes(){
+  const hojeD=new Date();
+  const diaSemanaHoje=hojeD.getDay();
+  const agora=Date.now();
+  const idsNaLista=new Set(listaAtual().map(i=>i.insumoId));
+
+  return dados.insumos.flatMap(ins=>{
+    if(idsNaLista.has(ins.id)) return [];
+
+    const reg=dados.historico
+      .filter(h=>h.insumoId===ins.id)
+      .sort((a,b)=>new Date(b.data)-new Date(a.data));
+
+    if(reg.length<2) return []; // precisa de ao menos 2 compras para calcular padrão
+
+    let score=0;
+
+    // Sinal 1: padrão de dia da semana
+    const comprasNoDia=reg.filter(h=>new Date(h.data).getDay()===diaSemanaHoje).length;
+    const pctDia=comprasNoDia/reg.length;
+    if(pctDia>=0.5) score+=2;
+    else if(pctDia>=0.25) score+=1;
+
+    // Sinal 2: intervalo médio de reposição
+    const diffs=[];
+    for(let i=0;i<reg.length-1;i++)
+      diffs.push((new Date(reg[i].data)-new Date(reg[i+1].data))/864e5);
+    const mediaIntervalo=diffs.reduce((a,b)=>a+b,0)/diffs.length;
+    const diasSemUltima=(agora-new Date(reg[0].data))/864e5;
+    if(diasSemUltima>=mediaIntervalo*0.75) score+=2;
+    else if(diasSemUltima>=mediaIntervalo*0.5) score+=1;
+
+    if(score<2) return [];
+
+    // Quantidade mais frequente nas últimas 5 compras
+    const qtds=reg.slice(0,5).map(h=>h.qtd).filter(Boolean);
+    let qtdSugerida='';
+    if(qtds.length){
+      const freq={};
+      qtds.forEach(q=>freq[q]=(freq[q]||0)+1);
+      qtdSugerida=Object.entries(freq).sort((a,b)=>b[1]-a[1])[0][0];
+    }
+
+    const diasDesdeUltima=Math.round(diasSemUltima);
+    const mediaArredondada=Math.round(mediaIntervalo);
+    // Motivo principal da sugestão
+    const motivo=pctDia>=0.5
+      ? `comprado às ${diasSemanaAbrev[diaSemanaHoje]}s`
+      : `sem compra há ${diasDesdeUltima}d (média ${mediaArredondada}d)`;
+
+    return [{ins,score,qtdSugerida,diasDesdeUltima,motivo}];
+  }).sort((a,b)=>b.score-a.score||b.diasDesdeUltima-a.diasDesdeUltima).slice(0,8);
+}
+
+function renderSugestoes(){
+  const sugestoes=calcSugestoes();
+  if(!sugestoes.length) return '';
+
+  const idsNaLista=new Set(listaAtual().map(i=>i.insumoId));
+
+  let html=`<div class="sug-card">
+    <div class="sug-header" onclick="toggleSugestoes()">
+      <div class="sug-header-left">
+        <span class="sug-icon">✨</span>
+        <span class="sug-title">Sugestões para hoje</span>
+        <span class="sug-badge">${sugestoes.length}</span>
+      </div>
+      <span class="sug-chev${sugestoesAberto?'':' fechado'}" id="sug-chev">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </span>
+    </div>
+    <div class="sug-body" id="sug-body" style="display:${sugestoesAberto?'block':'none'}">`;
+
+  sugestoes.forEach(s=>{
+    const jaAdicionado=idsNaLista.has(s.ins.id);
+    html+=`<div class="sug-item">
+      <div class="sug-item-info">
+        <div class="sug-item-nome">${s.ins.nome}</div>
+        <div class="sug-item-meta">${s.motivo}${s.qtdSugerida?' · '+s.qtdSugerida:''}</div>
+      </div>
+      <button class="sug-add-btn${jaAdicionado?' adicionado':''}"
+        onclick="adicionarSugestao('${s.ins.id}','${s.qtdSugerida.replace(/'/g,"\\'")}')">
+        ${jaAdicionado?'✓ na lista':'+ Adicionar'}
+      </button>
+    </div>`;
+  });
+
+  const pendentes=sugestoes.filter(s=>!idsNaLista.has(s.ins.id));
+  if(pendentes.length>1){
+    html+=`<button class="sug-add-all" onclick="adicionarTodasSugestoes()">
+      Adicionar todas (${pendentes.length} itens)
+    </button>`;
+  }
+
+  html+=`</div></div>`;
+  return html;
+}
+
+function toggleSugestoes(){
+  sugestoesAberto=!sugestoesAberto;
+  const body=document.getElementById('sug-body');
+  const chev=document.getElementById('sug-chev');
+  if(body) body.style.display=sugestoesAberto?'block':'none';
+  if(chev) chev.classList.toggle('fechado',!sugestoesAberto);
+}
+
+function adicionarSugestao(insId,qtdSugerida){
+  const tipo=dados.listaTipoAtual;
+  const agora=new Date().toISOString();
+  // Remove se já existe (evita duplicata)
+  if(dados.listas[tipo].some(i=>i.insumoId===insId)) return;
+  dados.listas[tipo].push({id:uid(),insumoId:insId,qtd:qtdSugerida,notas:'',data:agora});
+  dados.historico.push({id:uid(),insumoId:insId,qtd:qtdSugerida,notas:'',data:agora,tipo});
+  salvar();
+  renderLista();
+}
+
+function adicionarTodasSugestoes(){
+  const sugestoes=calcSugestoes();
+  const tipo=dados.listaTipoAtual;
+  const agora=new Date().toISOString();
+  const idsNaLista=new Set(dados.listas[tipo].map(i=>i.insumoId));
+  let adicionou=false;
+  sugestoes.forEach(s=>{
+    if(idsNaLista.has(s.ins.id)) return;
+    dados.listas[tipo].push({id:uid(),insumoId:s.ins.id,qtd:s.qtdSugerida,notas:'',data:agora});
+    dados.historico.push({id:uid(),insumoId:s.ins.id,qtd:s.qtdSugerida,notas:'',data:agora,tipo});
+    adicionou=true;
+  });
+  if(adicionou){salvar();renderLista();}
+}
+
+// ===== LISTA =====
+function toggleGrupo(key){
+  document.getElementById('gi-'+key)?.classList.toggle('open');
+  document.getElementById('gc-'+key)?.classList.toggle('open');
+}
+
+function renderLista(){
+  renderTabs();
+  const el=document.getElementById('lista-content');
+  const lista=listaAtual();
+  let html=renderSugestoes();
+
+  if(!lista.length){
+    html+=`<div class="empty" style="padding-top:${html?'16px':'40px'}">
+      Lista vazia.<br>Toque em <b>+ Adicionar insumo</b> para começar.
+    </div>`;
+    el.innerHTML=html;
+    return;
+  }
+
+  const grupos={};
+  lista.forEach(item=>{
+    const ins=dados.insumos.find(i=>i.id===item.insumoId);
+    const forn=ins&&ins.fornId?dados.fornecedores.find(f=>f.id===ins.fornId):null;
+    const key=forn?forn.id:'sem';
+    if(!grupos[key])grupos[key]={forn,items:[]};
+    grupos[key].items.push({item,ins});
+  });
+
+  const ordem=[...dados.fornecedores.map(f=>f.id),'sem'];
+  const totalComprados=lista.filter(i=>i.comprado).length;
+
+  if(totalComprados>0){
+    html+=`<div style="padding:8px 16px 0;display:flex;align-items:center;justify-content:space-between">
+      <span style="font-size:12px;color:var(--muted)">${totalComprados} de ${lista.length} comprados</span>
+      <button class="btn btn-ghost btn-sm" style="font-size:11px;padding:4px 10px" onclick="limparComprados()">Limpar comprados</button>
+    </div>`;
+  }
+
+  Object.entries(grupos).sort((a,b)=>ordem.indexOf(a[0])-ordem.indexOf(b[0])).forEach(([key,g])=>{
+    const nome=g.forn?g.forn.nome:'Sem fornecedor';
+    const tel=g.forn&&g.forn.tel?g.forn.tel:'';
+    const end=g.forn&&g.forn.end?g.forn.end:'';
+    const temInfo=tel||end;
+    const pendentes=g.items.filter(x=>!x.item.comprado).length;
+    const comprados=g.items.filter(x=>x.item.comprado).length;
+
+    html+=`<div class="group-header" onclick="${temInfo?`toggleGrupo('${key}')`:''}" style="${temInfo?'':'cursor:default'}">
+      <div class="group-header-left">
+        <span class="group-title">${nome}</span>
+        <span class="group-count">${pendentes>0?pendentes:''}${pendentes>0&&comprados>0?'<span style="color:#B7E4C7"> · </span>':''}${comprados>0?`<span style="color:var(--accent)">✓${comprados}</span>`:''}</span>
+      </div>
+      ${temInfo?`<span class="group-chevron" id="gc-${key}"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>`:''}
+    </div>`;
+
+    if(temInfo){
+      html+=`<div class="group-info" id="gi-${key}">`;
+      if(tel) html+=`<a href="tel:${tel}">📞 ${tel}</a>`;
+      if(end) html+=`<a href="${end.startsWith('http')?end:'https://maps.google.com/?q='+encodeURIComponent(end)}" target="_blank">🗺 Ver no mapa</a>`;
+      html+=`</div>`;
+    }
+
+    html+=`<div class="card" style="padding:4px 14px">`;
+    [...g.items].sort((a,b)=>(a.item.comprado?1:0)-(b.item.comprado?1:0)).forEach(({item,ins})=>{
+      const semForn=!ins||!ins.fornId||!dados.fornecedores.find(f=>f.id===ins.fornId);
+      html+=`<div class="item-row${item.comprado?' done-row':''}" data-id="${item.id}">
+        <button class="check-btn${item.comprado?' done':''}" data-id="${item.id}" onclick="toggleComprado('${item.id}')">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </button>
+        <div style="flex:1;margin:0 10px;min-width:0">
+          <div class="item-name" style="font-size:14px;font-weight:500">${ins?ins.nome:'?'}</div>
+          ${item.qtd?`<div class="item-qty" style="font-size:12px;color:var(--muted)">${item.qtd}</div>`:''}
+          ${item.notas?`<div class="item-notes" style="font-size:11px;color:var(--muted);font-style:italic">${item.notas}</div>`:''}
+          ${semForn&&ins?`<button style="font-size:10px;color:var(--accent);background:none;border:none;cursor:pointer;padding:2px 0;font-family:var(--font)" onclick="editarInsumo('${ins.id}')">+ Vincular fornecedor</button>`:''}
+        </div>
+        <button class="btn btn-danger" onclick="removerItem('${item.id}')">✕</button>
+      </div>`;
+    });
+    html+='</div>';
+  });
+
+  el.innerHTML=html;
+}
+
+function toggleComprado(id){
+  const item=listaAtual().find(i=>i.id===id);
+  if(!item)return;
+  item.comprado=!item.comprado;
+  salvar();
+  document.querySelector(`.item-row[data-id="${id}"]`)?.classList.toggle('done-row',item.comprado);
+  document.querySelector(`.check-btn[data-id="${id}"]`)?.classList.toggle('done',item.comprado);
+  renderTabs();
+}
+function removerItem(id){dados.listas[dados.listaTipoAtual]=listaAtual().filter(i=>i.id!==id);salvar();renderLista();}
+function limparComprados(){dados.listas[dados.listaTipoAtual]=listaAtual().filter(i=>!i.comprado);salvar();renderLista();}
+
+// ===== ROTA =====
+function abrirAcaoRota(){
+  if(!listaAtual().length) return;
+  abrirModal('sheet-rota');
+}
+function abrirRota(app){
+  fecharModal('sheet-rota');
+  const enderecos=new Set();
+  listaAtual().forEach(item=>{
+    const ins=dados.insumos.find(i=>i.id===item.insumoId);
+    if(!ins?.fornId) return;
+    const forn=dados.fornecedores.find(f=>f.id===ins.fornId);
+    if(forn?.end?.trim()) enderecos.add(forn.end.trim());
+  });
+  const wp=[...enderecos];
+  if(!wp.length) return;
+  if(app==='waze'){
+    window.open(`https://waze.com/ul?q=${encodeURIComponent(wp[wp.length-1])}&navigate=yes`,'_blank');
+  } else {
+    const dest=wp.pop();
+    const wStr=wp.length?'&waypoints='+wp.map(encodeURIComponent).join('|'):'';
+    window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(dest)}${wStr}&travelmode=driving`,'_blank');
+  }
+}
+
+// ===== EXPORTAR WHATSAPP =====
+function exportarWhatsApp(){
+  const lista=listaAtual();
+  if(!lista.length) return;
+  const tipo=TIPOS_LISTA.find(t=>t.id===dados.listaTipoAtual);
+  const grupos={};
+  lista.forEach(item=>{
+    const ins=dados.insumos.find(i=>i.id===item.insumoId);
+    const forn=ins?.fornId?dados.fornecedores.find(f=>f.id===ins.fornId):null;
+    const key=forn?forn.nome:'Sem fornecedor';
+    if(!grupos[key]) grupos[key]=[];
+    grupos[key].push({ins,item});
+  });
+  let txt=`*Lista de compras — ${tipo.label}*\n_${hoje()}_\n`;
+  Object.entries(grupos).forEach(([fornNome,items])=>{
+    txt+=`\n*${fornNome}*\n`;
+    items.forEach(({ins,item})=>{
+      txt+=`• ${ins?ins.nome:'?'}`;
+      if(item.qtd) txt+=` — ${item.qtd}`;
+      if(item.notas) txt+=` _(${item.notas})_`;
+      txt+='\n';
+    });
+  });
+  const comprados=lista.filter(i=>i.comprado).length;
+  if(comprados>0) txt+=`\n_${comprados} de ${lista.length} já comprados_`;
+  window.open('https://wa.me/?text='+encodeURIComponent(txt.trim()),'_blank');
 }
 
 // ===== DASHBOARD =====
 let mapaLeaflet=null;
-
 function extrairCoords(end){
-  if(!end)return null;
+  if(!end) return null;
   const m=end.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/);
-  if(m)return[parseFloat(m[1]),parseFloat(m[2])];
+  if(m) return[parseFloat(m[1]),parseFloat(m[2])];
   const m2=end.match(/[?&]q=(-?\d+\.\d+),(-?\d+\.\d+)/);
-  if(m2)return[parseFloat(m2[1]),parseFloat(m2[2])];
+  if(m2) return[parseFloat(m2[1]),parseFloat(m2[2])];
   return null;
 }
-
 function renderDash(){
   const el=document.getElementById('dash-content');
   const agora=Date.now(),semana=7*864e5;
   const hisSemana=dados.historico.filter(h=>agora-new Date(h.data)<semana);
   const totalNaLista=TIPOS_LISTA.reduce((a,t)=>a+dados.listas[t.id].length,0);
-
   const ultimaCompra=[...dados.historico].sort((a,b)=>new Date(b.data)-new Date(a.data));
   let ultimaInfo='Nenhuma compra registrada',ultimaDia='';
   if(ultimaCompra.length){
@@ -601,7 +903,6 @@ function renderDash(){
     ultimaDia=diasAtras===0?'hoje':diasAtras===1?'ontem':`há ${diasAtras} dias (${fmtDia(ultimaCompra[0].data)})`;
     ultimaInfo=nomes.length<=3?nomes.join(', '):nomes.slice(0,2).join(', ')+` e mais ${nomes.length-2}`;
   }
-
   const contagem={};
   dados.historico.forEach(h=>{
     const ins=dados.insumos.find(i=>i.id===h.insumoId);
@@ -617,13 +918,11 @@ function renderDash(){
     <div class="dash-card"><div class="dash-num">${hisSemana.length}</div><div class="dash-label">comprados esta semana</div></div>
     <div class="dash-card"><div class="dash-num">${totalNaLista}</div><div class="dash-label">itens nas listas</div></div>
   </div>`;
-
   if(ultimaCompra.length) html+=`<div class="dash-card-full">
     <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:8px">Última compra — ${ultimaDia}</div>
     <div style="font-size:14px">${ultimaInfo}</div>
   </div>`;
 
-  // Mapa
   const fornComEnd=dados.fornecedores.filter(f=>f.end&&f.end.trim());
   html+=`<div class="dash-card-full">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
@@ -642,7 +941,7 @@ function renderDash(){
       soTexto.forEach(f=>{
         const href=f.end.startsWith('http')?f.end:'https://maps.google.com/?q='+encodeURIComponent(f.end);
         html+=`<div class="forn-map-card"><div><div style="font-size:13px;font-weight:500">${f.nome}</div><div style="font-size:11px;color:var(--muted)">${f.end}</div></div>
-          <a href="${href}" target="_blank" style="font-size:12px;color:var(--accent);text-decoration:none;flex-shrink:0;margin-left:8px">🗺 Abrir</a></div>`;
+          <a href="${href}" target="_blank" style="font-size:12px;color:var(--accent);text-decoration:none;margin-left:8px">🗺 Abrir</a></div>`;
       });
       html+=`</div>`;
     }
@@ -665,20 +964,15 @@ function renderDash(){
     alertas.forEach(a=>html+=`<div style="font-size:13px;margin-bottom:6px"><b>${a.nome}</b> — sem compra há ${a.dias} dias <span style="color:var(--muted)">(média: ${a.media} dias)</span></div>`);
     html+=`</div>`;
   }
-
   el.innerHTML=html;
 
-  // Inicia mapa Leaflet
   const fornComCoords=dados.fornecedores.map(f=>({f,coords:extrairCoords(f.end)})).filter(x=>x.coords);
   if(fornComCoords.length&&document.getElementById('leaflet-map')){
     if(mapaLeaflet){mapaLeaflet.remove();mapaLeaflet=null;}
     const map=L.map('leaflet-map');
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© <a href="https://openstreetmap.org">OpenStreetMap</a>',maxZoom:19}).addTo(map);
     const bounds=[];
-    fornComCoords.forEach(({f,coords})=>{
-      L.marker(coords).addTo(map).bindPopup(`<b>${f.nome}</b>${f.tel?'<br>'+f.tel:''}`);
-      bounds.push(coords);
-    });
+    fornComCoords.forEach(({f,coords})=>{L.marker(coords).addTo(map).bindPopup(`<b>${f.nome}</b>${f.tel?'<br>'+f.tel:''}`);bounds.push(coords);});
     if(bounds.length===1) map.setView(bounds[0],15); else map.fitBounds(bounds,{padding:[20,20]});
     mapaLeaflet=map;
   }
@@ -686,7 +980,7 @@ function renderDash(){
 
 function abrirRotaFornecedores(){
   const ends=dados.fornecedores.filter(f=>f.end&&f.end.trim()).map(f=>f.end.trim());
-  if(!ends.length)return;
+  if(!ends.length) return;
   const dest=ends.pop();
   const wStr=ends.length?'&waypoints='+ends.map(encodeURIComponent).join('|'):'';
   window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(dest)}${wStr}&travelmode=driving`,'_blank');
@@ -695,239 +989,13 @@ function abrirRotaFornecedores(){
 function calcAlerts(){
   return dados.insumos.flatMap(ins=>{
     const reg=dados.historico.filter(h=>h.insumoId===ins.id).sort((a,b)=>new Date(b.data)-new Date(a.data));
-    if(reg.length<2)return[];
+    if(reg.length<2) return[];
     const diffs=[];
     for(let i=0;i<reg.length-1;i++) diffs.push((new Date(reg[i].data)-new Date(reg[i+1].data))/864e5);
     const media=diffs.reduce((a,b)=>a+b,0)/diffs.length;
     const dias=(Date.now()-new Date(reg[0].data))/864e5;
     return dias>media*1.3?[{nome:ins.nome,dias:Math.round(dias),media:Math.round(media)}]:[];
   });
-}
-
-// ===== LISTA =====
-function toggleGrupo(key){
-  const info=document.getElementById('gi-'+key);
-  const chev=document.getElementById('gc-'+key);
-  if(info){info.classList.toggle('open');chev.classList.toggle('open');}
-}
-
-function renderLista(){
-  renderTabs();
-  const el=document.getElementById('lista-content');
-  const lista=listaAtual();
-  if(!lista.length){
-    el.innerHTML='<div class="empty">Lista vazia.<br>Toque em <b>+ Adicionar insumo</b> para começar.</div>';
-    return;
-  }
-  const grupos={};
-  lista.forEach(item=>{
-    const ins=dados.insumos.find(i=>i.id===item.insumoId);
-    const forn=ins&&ins.fornId?dados.fornecedores.find(f=>f.id===ins.fornId):null;
-    const key=forn?forn.id:'sem';
-    if(!grupos[key])grupos[key]={forn,items:[]};
-    grupos[key].items.push({item,ins});
-  });
-  const ordem=[...dados.fornecedores.map(f=>f.id),'sem'];
-  const totalComprados=lista.filter(i=>i.comprado).length;
-  let html='';
-  if(totalComprados>0){
-    html+=`<div style="padding:8px 16px 0;display:flex;align-items:center;justify-content:space-between">
-      <span style="font-size:12px;color:var(--muted)">${totalComprados} de ${lista.length} comprados</span>
-      <button class="btn btn-ghost btn-sm" style="font-size:11px;padding:4px 10px" onclick="limparComprados()">Limpar comprados</button>
-    </div>`;
-  }
-  Object.entries(grupos).sort((a,b)=>ordem.indexOf(a[0])-ordem.indexOf(b[0])).forEach(([key,g])=>{
-    const nome=g.forn?g.forn.nome:'Sem fornecedor';
-    const tel=g.forn&&g.forn.tel?g.forn.tel:'';
-    const end=g.forn&&g.forn.end?g.forn.end:'';
-    const temInfo=tel||end;
-    const pendentes=g.items.filter(x=>!x.item.comprado).length;
-    const comprados=g.items.filter(x=>x.item.comprado).length;
-    html+=`<div class="group-header" onclick="${temInfo?`toggleGrupo('${key}')`:''}" style="${temInfo?'':'cursor:default'}">
-      <div class="group-header-left">
-        <span class="group-title">${nome}</span>
-        <span class="group-count">${pendentes>0?pendentes:''}<span style="color:#B7E4C7">${pendentes>0&&comprados>0?' · ':''}</span>${comprados>0?`<span style="color:var(--accent)">✓${comprados}</span>`:''}</span>
-      </div>
-      ${temInfo?`<span class="group-chevron" id="gc-${key}"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>`:''}
-    </div>`;
-    if(temInfo){
-      html+=`<div class="group-info" id="gi-${key}">`;
-      if(tel) html+=`<a href="tel:${tel}">📞 ${tel}</a>`;
-      if(end) html+=`<a href="${end.startsWith('http')?end:'https://maps.google.com/?q='+encodeURIComponent(end)}" target="_blank">🗺 Ver no mapa</a>`;
-      html+=`</div>`;
-    }
-    html+=`<div class="card" style="padding:4px 14px">`;
-    [...g.items].sort((a,b)=>(a.item.comprado?1:0)-(b.item.comprado?1:0)).forEach(({item,ins})=>{
-      const semForn=!ins||!ins.fornId||!dados.fornecedores.find(f=>f.id===ins.fornId);
-      html+=`<div class="item-row${item.comprado?' done-row':''}" data-id="${item.id}">
-        <button class="check-btn${item.comprado?' done':''}" data-id="${item.id}" onclick="toggleComprado('${item.id}')">
-          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-        </button>
-        <div style="flex:1;margin:0 10px;min-width:0">
-          <div class="item-name" style="font-size:14px;font-weight:500">${ins?ins.nome:'?'}</div>
-          ${item.qtd?`<div class="item-qty" style="font-size:12px;color:var(--muted)">${item.qtd}</div>`:''}
-          ${item.notas?`<div class="item-notes" style="font-size:11px;color:var(--muted);font-style:italic">${item.notas}</div>`:''}
-          ${semForn&&ins?`<button style="font-size:10px;color:var(--accent);background:none;border:none;cursor:pointer;padding:2px 0;font-family:var(--font)" onclick="editarInsumo('${ins.id}')">+ Vincular fornecedor</button>`:''}
-        </div>
-        <button class="btn btn-danger" onclick="removerItem('${item.id}')">✕</button>
-      </div>`;
-    });
-    html+='</div>';
-  });
-  el.innerHTML=html;
-}
-
-function toggleComprado(id){
-  const lista=listaAtual();
-  const item=lista.find(i=>i.id===id);
-  if(!item)return;
-  item.comprado=!item.comprado;
-  salvar();
-  const row=document.querySelector(`.item-row[data-id="${id}"]`);
-  const btn=document.querySelector(`.check-btn[data-id="${id}"]`);
-  if(row&&btn){row.classList.toggle('done-row',item.comprado);btn.classList.toggle('done',item.comprado);}
-  renderTabs();
-}
-function removerItem(id){dados.listas[dados.listaTipoAtual]=listaAtual().filter(i=>i.id!==id);salvar();renderLista();}
-function limparComprados(){dados.listas[dados.listaTipoAtual]=listaAtual().filter(i=>!i.comprado);salvar();renderLista();}
-
-// ===== ROTA =====
-function abrirAcaoRota(){
-  const lista=listaAtual();
-  if(!lista.length){return;}
-  abrirModal('sheet-rota');
-}
-function abrirRota(app){
-  fecharModal('sheet-rota');
-  const lista=listaAtual();
-  const enderecos=new Set();
-  lista.forEach(item=>{
-    const ins=dados.insumos.find(i=>i.id===item.insumoId);
-    if(!ins||!ins.fornId)return;
-    const forn=dados.fornecedores.find(f=>f.id===ins.fornId);
-    if(forn&&forn.end&&forn.end.trim())enderecos.add(forn.end.trim());
-  });
-  const wp=[...enderecos];
-  if(!wp.length){return;}
-  if(app==='waze'){
-    const dest=wp[wp.length-1];
-    window.open(`https://waze.com/ul?q=${encodeURIComponent(dest)}&navigate=yes`,'_blank');
-  } else {
-    const dest=wp.pop();
-    const wStr=wp.length?'&waypoints='+wp.map(encodeURIComponent).join('|'):'';
-    window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(dest)}${wStr}&travelmode=driving`,'_blank');
-  }
-}
-
-// ===== EXPORTAR WHATSAPP =====
-function exportarWhatsApp(){
-  const lista=listaAtual();
-  if(!lista.length){return;}
-  const tipo=TIPOS_LISTA.find(t=>t.id===dados.listaTipoAtual);
-  const grupos={};
-  lista.forEach(item=>{
-    const ins=dados.insumos.find(i=>i.id===item.insumoId);
-    const forn=ins&&ins.fornId?dados.fornecedores.find(f=>f.id===ins.fornId):null;
-    const key=forn?forn.nome:'Sem fornecedor';
-    if(!grupos[key])grupos[key]=[];
-    grupos[key].push({ins,item});
-  });
-  let txt=`*Lista de compras — ${tipo.label}*\n_${hoje()}_\n`;
-  Object.entries(grupos).forEach(([fornNome,items])=>{
-    txt+=`\n*${fornNome}*\n`;
-    items.forEach(({ins,item})=>{
-      txt+=`• ${ins?ins.nome:'?'}`;
-      if(item.qtd) txt+=` — ${item.qtd}`;
-      if(item.notas) txt+=` _(${item.notas})_`;
-      txt+='\n';
-    });
-  });
-  const comprados=lista.filter(i=>i.comprado).length;
-  if(comprados>0) txt+=`\n_${comprados} de ${lista.length} já comprados_`;
-  window.open('https://wa.me/?text='+encodeURIComponent(txt.trim()),'_blank');
-}
-
-// ===== AUTOCOMPLETE =====
-let acSelecionado=null,acAtivo=-1,acUltimaQuery='';
-const acInput=document.getElementById('ac-input');
-const acDropdown=document.getElementById('ac-dropdown');
-const acBox=document.getElementById('ac-box');
-const acClear=document.getElementById('ac-clear');
-
-function highlight(texto,query){
-  if(!query)return texto;
-  const re=new RegExp('('+query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
-  return texto.replace(re,'<mark>$1</mark>');
-}
-function renderDropdown(query){
-  const q=norm(query);acUltimaQuery=query;
-  if(!q){acDropdown.classList.remove('open');return;}
-  let res=dados.insumos.filter(i=>norm(i.nome).includes(q));
-  res.sort((a,b)=>{const s=norm(a.nome).startsWith(q)?0:1,t=norm(b.nome).startsWith(q)?0:1;return s-t||a.nome.localeCompare(b.nome,'pt');});
-  if(!res.length){
-    acDropdown.innerHTML=`<div class="ac-empty">Nenhum insumo encontrado.<br><span style="color:var(--accent);cursor:pointer" onclick="abrirModalInsumoCom('${query.replace(/'/g,"\\'")}')">+ Cadastrar "${query}"</span></div>`;
-    acDropdown.classList.add('open');acAtivo=-1;return;
-  }
-  const grupos={};
-  res.forEach(i=>{
-    const forn=i.fornId?dados.fornecedores.find(f=>f.id===i.fornId):null;
-    const key=forn?forn.id:'sem';
-    if(!grupos[key])grupos[key]={nome:forn?forn.nome:'Sem fornecedor',items:[]};
-    grupos[key].items.push(i);
-  });
-  const ordem=[...dados.fornecedores.map(f=>f.id),'sem'];
-  let html='';
-  Object.entries(grupos).sort((a,b)=>ordem.indexOf(a[0])-ordem.indexOf(b[0])).forEach(([,g])=>{
-    html+=`<div class="ac-group-label">${g.nome}</div>`;
-    g.items.forEach(i=>{html+=`<div class="ac-item" data-id="${i.id}" onmousedown="selecionarItem('${i.id}')"><span>${highlight(i.nome,query)}</span><span class="ac-item-forn">${i.cat||''}</span></div>`;});
-  });
-  acDropdown.innerHTML=html;acDropdown.classList.add('open');acAtivo=-1;
-}
-
-acInput.addEventListener('input',()=>{acSelecionado=null;acBox.classList.remove('selected');acClear.style.display='none';document.getElementById('forn-pill-wrap').innerHTML='';renderDropdown(acInput.value);});
-acInput.addEventListener('focus',()=>{acBox.classList.add('focused');if(acInput.value&&!acSelecionado)renderDropdown(acInput.value);});
-acInput.addEventListener('blur',()=>{acBox.classList.remove('focused');setTimeout(()=>acDropdown.classList.remove('open'),150);});
-acInput.addEventListener('keydown',e=>{
-  const items=acDropdown.querySelectorAll('.ac-item');
-  if(e.key==='ArrowDown'){e.preventDefault();acAtivo=Math.min(acAtivo+1,items.length-1);items.forEach((el,i)=>el.classList.toggle('active',i===acAtivo));}
-  else if(e.key==='ArrowUp'){e.preventDefault();acAtivo=Math.max(acAtivo-1,0);items.forEach((el,i)=>el.classList.toggle('active',i===acAtivo));}
-  else if(e.key==='Enter'&&acAtivo>=0){e.preventDefault();const el=items[acAtivo];if(el)selecionarItem(el.dataset.id);}
-  else if(e.key==='Escape')acDropdown.classList.remove('open');
-});
-
-function selecionarItem(id){
-  const ins=dados.insumos.find(i=>i.id===id);if(!ins)return;
-  acSelecionado=ins;acInput.value=ins.nome;acBox.classList.add('selected');acClear.style.display='flex';
-  acDropdown.classList.remove('open');
-  const forn=ins.fornId?dados.fornecedores.find(f=>f.id===ins.fornId):null;
-  document.getElementById('forn-pill-wrap').innerHTML=forn
-    ?`<div class="forn-pill">🏪 ${forn.nome}</div>`
-    :`<div class="forn-pill" style="background:#F5F2ED;border-color:var(--border);color:var(--muted)">Sem fornecedor</div>`;
-  document.getElementById('inp-qtd').focus();
-}
-function limparSelecao(){
-  acSelecionado=null;acInput.value='';acBox.classList.remove('selected');acClear.style.display='none';
-  document.getElementById('forn-pill-wrap').innerHTML='';acDropdown.classList.remove('open');acInput.focus();
-}
-
-// ===== MODAL ADICIONAR =====
-function abrirModalAdicionar(){
-  limparSelecao();document.getElementById('inp-qtd').value='';document.getElementById('inp-notas').value='';
-  abrirModal('modal-adicionar');setTimeout(()=>acInput.focus(),250);
-}
-function adicionarItem(){
-  if(!acSelecionado){
-    const texto=acInput.value.trim();if(!texto)return;
-    const exato=dados.insumos.find(i=>norm(i.nome)===norm(texto));
-    if(exato){selecionarItem(exato.id);return;}
-    acInput.style.boxShadow='0 0 0 2px var(--danger)';setTimeout(()=>acInput.style.boxShadow='',800);return;
-  }
-  const qtd=document.getElementById('inp-qtd').value.trim();
-  const notas=document.getElementById('inp-notas').value.trim();
-  const tipo=dados.listaTipoAtual;
-  dados.listas[tipo].push({id:uid(),insumoId:acSelecionado.id,qtd,notas,data:new Date().toISOString()});
-  dados.historico.push({id:uid(),insumoId:acSelecionado.id,qtd,notas,data:new Date().toISOString(),tipo});
-  salvar();fecharModal('modal-adicionar');renderLista();
 }
 
 // ===== CADASTROS =====
@@ -943,7 +1011,7 @@ function renderCadastros(){
       <button class="btn btn-ghost btn-sm" style="margin-left:8px;flex-shrink:0" onclick="editarFornecedor('${f.id}')">Editar</button>
     </div></div>`;
   });
-  if(!h)h='<div class="empty" style="padding:20px 0">Nenhum fornecedor.</div>';
+  if(!h) h='<div class="empty" style="padding:20px 0">Nenhum fornecedor.</div>';
   document.getElementById('lista-fornecedores').innerHTML=h;
 
   let h2='';
@@ -954,11 +1022,11 @@ function renderCadastros(){
   }
   dados.fornecedores.forEach(f=>{
     const ins=dados.insumos.filter(i=>i.fornId===f.id);
-    if(!ins.length)return;
+    if(!ins.length) return;
     h2+=`<div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:12px 0 6px">${f.nome}</div>`;
     ins.forEach(i=>h2+=insCard(i));
   });
-  if(!h2)h2='<div class="empty" style="padding:20px 0">Nenhum insumo.</div>';
+  if(!h2) h2='<div class="empty" style="padding:20px 0">Nenhum insumo.</div>';
   document.getElementById('lista-insumos-cad').innerHTML=h2;
 }
 function insCard(i){
@@ -980,7 +1048,7 @@ function abrirModalFornecedor(id){
   document.getElementById('forn-delete-wrap').style.display=id?'block':'none';
   abrirModal('modal-fornecedor');
 }
-function editarFornecedor(id){abrirModalFornecedor(id)}
+function editarFornecedor(id){abrirModalFornecedor(id);}
 function salvarFornecedor(){
   const nome=document.getElementById('forn-nome').value.trim();if(!nome)return;
   const tel=document.getElementById('forn-tel').value.trim();
@@ -1038,9 +1106,8 @@ function salvarInsumo(){
     const ins=dados.insumos.find(i=>i.id===editandoInsumoId);
     if(ins){ins.nome=nome;ins.cat=cat;ins.fornId=fornId;}
     salvar();fecharModal('modal-insumo');
-    // Re-render depending on which screen is visible
     if(document.getElementById('screen-cadastros').classList.contains('active')) renderCadastros();
-    else if(document.getElementById('screen-lista').classList.contains('active')) renderLista();
+    else renderLista();
   } else {
     const novoInsumo={id:uid(),nome,cat,fornId};
     dados.insumos.push(novoInsumo);
@@ -1058,15 +1125,92 @@ function excluirInsumoModal(){
   });
 }
 
+// ===== AUTOCOMPLETE =====
+let acSelecionado=null,acAtivo=-1,acUltimaQuery='';
+const acInput=document.getElementById('ac-input');
+const acDropdown=document.getElementById('ac-dropdown');
+const acBox=document.getElementById('ac-box');
+const acClear=document.getElementById('ac-clear');
+
+function highlight(texto,query){
+  if(!query)return texto;
+  return texto.replace(new RegExp('('+query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),'<mark>$1</mark>');
+}
+function renderDropdown(query){
+  const q=norm(query);acUltimaQuery=query;
+  if(!q){acDropdown.classList.remove('open');return;}
+  let res=dados.insumos.filter(i=>norm(i.nome).includes(q));
+  res.sort((a,b)=>{const s=norm(a.nome).startsWith(q)?0:1,t=norm(b.nome).startsWith(q)?0:1;return s-t||a.nome.localeCompare(b.nome,'pt');});
+  if(!res.length){
+    acDropdown.innerHTML=`<div class="ac-empty">Nenhum insumo encontrado.<br><span style="color:var(--accent);cursor:pointer" onclick="abrirModalInsumoCom('${query.replace(/'/g,"\\'")}')">+ Cadastrar "${query}"</span></div>`;
+    acDropdown.classList.add('open');acAtivo=-1;return;
+  }
+  const grupos={};
+  res.forEach(i=>{
+    const forn=i.fornId?dados.fornecedores.find(f=>f.id===i.fornId):null;
+    const key=forn?forn.id:'sem';
+    if(!grupos[key]) grupos[key]={nome:forn?forn.nome:'Sem fornecedor',items:[]};
+    grupos[key].items.push(i);
+  });
+  const ordem=[...dados.fornecedores.map(f=>f.id),'sem'];
+  let html='';
+  Object.entries(grupos).sort((a,b)=>ordem.indexOf(a[0])-ordem.indexOf(b[0])).forEach(([,g])=>{
+    html+=`<div class="ac-group-label">${g.nome}</div>`;
+    g.items.forEach(i=>{html+=`<div class="ac-item" data-id="${i.id}" onmousedown="selecionarItem('${i.id}')"><span>${highlight(i.nome,query)}</span><span class="ac-item-forn">${i.cat||''}</span></div>`;});
+  });
+  acDropdown.innerHTML=html;acDropdown.classList.add('open');acAtivo=-1;
+}
+acInput.addEventListener('input',()=>{acSelecionado=null;acBox.classList.remove('selected');acClear.style.display='none';document.getElementById('forn-pill-wrap').innerHTML='';renderDropdown(acInput.value);});
+acInput.addEventListener('focus',()=>{acBox.classList.add('focused');if(acInput.value&&!acSelecionado)renderDropdown(acInput.value);});
+acInput.addEventListener('blur',()=>{acBox.classList.remove('focused');setTimeout(()=>acDropdown.classList.remove('open'),150);});
+acInput.addEventListener('keydown',e=>{
+  const items=acDropdown.querySelectorAll('.ac-item');
+  if(e.key==='ArrowDown'){e.preventDefault();acAtivo=Math.min(acAtivo+1,items.length-1);items.forEach((el,i)=>el.classList.toggle('active',i===acAtivo));}
+  else if(e.key==='ArrowUp'){e.preventDefault();acAtivo=Math.max(acAtivo-1,0);items.forEach((el,i)=>el.classList.toggle('active',i===acAtivo));}
+  else if(e.key==='Enter'&&acAtivo>=0){e.preventDefault();const el=items[acAtivo];if(el)selecionarItem(el.dataset.id);}
+  else if(e.key==='Escape')acDropdown.classList.remove('open');
+});
+function selecionarItem(id){
+  const ins=dados.insumos.find(i=>i.id===id);if(!ins)return;
+  acSelecionado=ins;acInput.value=ins.nome;acBox.classList.add('selected');acClear.style.display='flex';
+  acDropdown.classList.remove('open');
+  const forn=ins.fornId?dados.fornecedores.find(f=>f.id===ins.fornId):null;
+  document.getElementById('forn-pill-wrap').innerHTML=forn
+    ?`<div class="forn-pill">🏪 ${forn.nome}</div>`
+    :`<div class="forn-pill" style="background:#F5F2ED;border-color:var(--border);color:var(--muted)">Sem fornecedor</div>`;
+  document.getElementById('inp-qtd').focus();
+}
+function limparSelecao(){
+  acSelecionado=null;acInput.value='';acBox.classList.remove('selected');acClear.style.display='none';
+  document.getElementById('forn-pill-wrap').innerHTML='';acDropdown.classList.remove('open');acInput.focus();
+}
+function abrirModalAdicionar(){
+  limparSelecao();document.getElementById('inp-qtd').value='';document.getElementById('inp-notas').value='';
+  abrirModal('modal-adicionar');setTimeout(()=>acInput.focus(),250);
+}
+function adicionarItem(){
+  if(!acSelecionado){
+    const texto=acInput.value.trim();if(!texto)return;
+    const exato=dados.insumos.find(i=>norm(i.nome)===norm(texto));
+    if(exato){selecionarItem(exato.id);return;}
+    acInput.style.boxShadow='0 0 0 2px var(--danger)';setTimeout(()=>acInput.style.boxShadow='',800);return;
+  }
+  const qtd=document.getElementById('inp-qtd').value.trim();
+  const notas=document.getElementById('inp-notas').value.trim();
+  const tipo=dados.listaTipoAtual;
+  const agora=new Date().toISOString();
+  dados.listas[tipo].push({id:uid(),insumoId:acSelecionado.id,qtd,notas,data:agora});
+  dados.historico.push({id:uid(),insumoId:acSelecionado.id,qtd,notas,data:agora,tipo});
+  salvar();fecharModal('modal-adicionar');renderLista();
+}
+
 // ===== BACKUP =====
-function abrirModalBackup(){abrirModal('sheet-backup');}
 function exportarDados(){
   const blob=new Blob([JSON.stringify(dados,null,2)],{type:'application/json'});
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');
   a.href=url;a.download=`compras_backup_${new Date().toISOString().split('T')[0]}.json`;
-  document.body.appendChild(a);a.click();document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
 }
 function importarDados(e){
   const file=e.target.files[0];if(!file)return;
@@ -1074,15 +1218,13 @@ function importarDados(e){
   reader.onload=ev=>{
     try{
       const imported=JSON.parse(ev.target.result);
-      if(!imported.fornecedores||!imported.insumos) throw new Error('Formato inválido');
+      if(!imported.fornecedores||!imported.insumos) throw new Error();
       confirmar('Isso substituirá todos os dados atuais. Continuar?',()=>{
         dados=imported;
         if(!dados.listas) dados.listas={recorrente:[],eventual:[],estoque:[]};
         salvar();ir('lista');
       },'Importar','Atenção');
-    }catch(err){
-      confirmar('Arquivo inválido ou corrompido.',()=>{},'OK','Erro');
-    }
+    }catch{confirmar('Arquivo inválido ou corrompido.',()=>{},'OK','Erro');}
   };
   reader.readAsText(file);
   e.target.value='';
@@ -1101,7 +1243,7 @@ function renderHistorico(){
     const d=new Date(h.data);
     const key=`${d.getFullYear()}-${String(d.getMonth()).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
     const label=`${diasSemana[d.getDay()]}, ${d.getDate()} de ${meses[d.getMonth()]}`;
-    if(!grupos[key])grupos[key]={label,items:[]};
+    if(!grupos[key]) grupos[key]={label,items:[]};
     grupos[key].items.push(h);
   });
   let html='<div style="padding-top:8px">';
@@ -1117,7 +1259,7 @@ function renderHistorico(){
       <div class="hist-day-items" id="hd-${key}">`;
     g.items.forEach(h=>{
       const ins=dados.insumos.find(i=>i.id===h.insumoId);
-      const forn=ins&&ins.fornId?dados.fornecedores.find(f=>f.id===ins.fornId):null;
+      const forn=ins?.fornId?dados.fornecedores.find(f=>f.id===ins.fornId):null;
       const tipoLabel=TIPOS_LISTA.find(t=>t.id===h.tipo);
       html+=`<div class="card-sm" style="margin-bottom:5px">
         <div style="font-size:14px;font-weight:500">${ins?ins.nome:'—'}</div>
